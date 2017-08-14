@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/datadelivery-mion6-testutils.iml" filepath="$PROJECT_DIR$/datadelivery-mion6-testutils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datadelivery-mion6-testutils_main.iml" filepath="$PROJECT_DIR$/.idea/modules/datadelivery-mion6-testutils_main.iml" group="datadelivery-mion6-testutils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/datadelivery-mion6-testutils_test.iml" filepath="$PROJECT_DIR$/.idea/modules/datadelivery-mion6-testutils_test.iml" group="datadelivery-mion6-testutils" />
+    </modules>
+  </component>
+</project>

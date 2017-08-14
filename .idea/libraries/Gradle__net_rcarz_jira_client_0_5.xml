@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.rcarz:jira-client:0.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.rcarz/jira-client/0.5/db37c2c309b8ee5ca5cea3371eb6e723c086c0ac/jira-client-0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.rcarz/jira-client/0.5/1e3e01245da10ef1c49c0323641102b1de863ad2/jira-client-0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.koloboke:koloboke-impl-jdk8:1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.koloboke/koloboke-impl-jdk8/1.0.0/c54a40841a9657097dadc866befcf624978f454d/koloboke-impl-jdk8-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.koloboke/koloboke-impl-jdk8/1.0.0/cb9a0161b94fbf73e8d5e70a60ec599c46f0103c/koloboke-impl-jdk8-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

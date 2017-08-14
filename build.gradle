@@ -1,0 +1,24 @@
+/* Define module properties */
+project.ext.Config = [
+        groupId : 'com.testutils',
+        baseName: 'test-utils',
+        version : 0.1,
+        snapshot: true
+]
+/* Apply base script */
+apply from: 'gradle/base.gradle'
+
+dependencies {
+    compile 'com.google.guava:guava:18.0'
+    compile 'net.rcarz:jira-client:0.5'
+
+
+    compile 'junit:junit:4.11'
+    compile 'org.mockito:mockito-core:1.9.0'
+
+    runtime 'ch.qos.logback:logback-classic:1.1.2'
+}
+
+test {
+    ignoreFailures true
+}

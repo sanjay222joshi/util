@@ -1,0 +1,148 @@
+defaultTasks 'base'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'jacoco'
+
+def n6Config = project.Config
+def fullVersion = Config.version + (Config.snapshot ? '-SNAPSHOT' : '')
+def uploadUrl = Config.snapshot ? "http://maven/artifactory/inhouse_snapshot-local" : "http://maven/artifactory/inhouse-local2"
+group=Config.groupId
+version=fullVersion
+/* Override default resource output directory to match IntelliJ which copies resources to classes output directory */
+sourceSets.test.output.resourcesDir = sourceSets.test.output.classesDir
+
+jacoco {
+    toolVersion = "0.7.5.201505241946"
+}
+
+configurations {
+    deployerJars
+    top20coverage
+}
+
+repositories {
+    repositories {
+        maven {
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
+            url = "http://maven/artifactory/all-releases"
+        }
+        maven {
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
+            url = "http://maven/artifactory/inhouse_snapshot-local"
+        }
+        maven {
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
+            url = "http://maven/artifactory/inhouse-local2"
+        }
+    }
+
+}
+
+dependencies {
+    deployerJars "org.apache.maven.wagon:wagon-http:2.2"
+    top20coverage ''
+    testCompile ''
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier 'sources'
+    from sourceSets.main.allJava
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+jar {
+    baseName = Config.baseName
+    version = fullVersion
+    manifest {
+        attributes 'Implementation-Title': baseName
+        attributes['Implementation-Version'] = fullVersion
+        attributes['Jira-Key'] = n6Config.jiraKey == null ? "Not specified" : Config.jiraKey
+        attributes['Jira-Id'] = n6Config.jiraId == null ? "Not specified" : Config.jiraId
+        if (project.hasProperty("teamcity")) {
+            attributes['Teamcity-BuildNumber'] = teamcity["build.number"]
+            attributes['Teamcity-ProjectName'] = teamcity["teamcity.projectName"]
+            attributes['Teamcity-BuildConfName'] = teamcity["teamcity.buildConfName"]
+            attributes['Teamcity-BuildVcsNumber'] = teamcity["build.vcs.number"]
+            attributes['Teamcity-BuildId'] = teamcity["teamcity.build.id"]
+        }
+    }
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        configuration = configurations.deployerJars
+        repository(url: uploadUrl) {
+            authentication(userName: "${artifactory_user}", password: "${artifactory_password}")
+        }
+        pom.groupId = Config.groupId
+        pom.artifactId = Config.baseName
+        pom.version = fullVersion
+    }
+}
+
+uploadArchives.enabled = project.hasProperty("teamcity") && !teamcity['build.is.personal']
+
+buildscript {
+    repositories {
+        maven {
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
+            url = "http://maven/artifactory/all-releases"
+        }
+    }
+}
+
+task checkSnapshotDependencies() {
+    doFirst {
+        List<String> illegalDependencies = new ArrayList<String>()
+        project.configurations.runtime.resolvedConfiguration.resolvedArtifacts.each { dp ->
+            def depId = dp.moduleVersion.id
+            if (!n6Config.snapshot
+                    && depId.group.startsWith("com.markit.n6platform")
+                    && depId.name.startsWith("n6-")
+                    && depId.version.endsWith("-SNAPSHOT")) {
+                illegalDependencies.add(depId.toString());
+            }
+        }
+
+        if (!illegalDependencies.isEmpty()) {
+            throw new GradleException("Non-snapshot module contains snapshot dependencies " + illegalDependencies)
+        }
+    }
+}
+
+task ('listAllDependencies', type: DependencyReportTask) {}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination "${buildDir}/reports/jacoco/test"
+    }
+}
+
+jacocoTestReport.dependsOn test
+
+task('top20Report', dependsOn: ['classes','jacocoTestReport'], type: JavaExec) {
+    main = 'com.markit.n6platform.testframework.jacoco.JacocoResultInterpreter'
+    classpath = configurations.top20coverage
+    args = [file('build/reports/jacoco/test'), file('src/main/java')]
+}
+
+task base(dependsOn: [clean, checkSnapshotDependencies, top20Report]) {}
+task artifactory(dependsOn: [base, uploadArchives]) {}

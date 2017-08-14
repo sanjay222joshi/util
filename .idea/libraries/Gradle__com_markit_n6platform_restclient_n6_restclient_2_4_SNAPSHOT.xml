@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.markit.n6platform.restclient:n6-restclient:2.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.markit.n6platform.restclient/n6-restclient/2.4-SNAPSHOT/e4340a046f95978fd621c5bfc9faa33dbb5654f/n6-restclient-2.4-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.markit.n6platform.restclient/n6-restclient/2.4-SNAPSHOT/cf69dbbee9e56e58e06fed4c9148bf1e7eefe6d4/n6-restclient-2.4-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

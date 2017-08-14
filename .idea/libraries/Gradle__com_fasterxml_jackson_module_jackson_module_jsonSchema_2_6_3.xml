@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.fasterxml.jackson.module:jackson-module-jsonSchema:2.6.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-jsonSchema/2.6.3/32b3928b06b43df4bc59aec80f305fe0709396b7/jackson-module-jsonSchema-2.6.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-jsonSchema/2.6.3/e9283d0c0831174d669c421410b70206a31a0406/jackson-module-jsonSchema-2.6.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

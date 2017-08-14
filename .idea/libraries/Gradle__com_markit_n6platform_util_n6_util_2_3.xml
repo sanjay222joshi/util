@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.markit.n6platform.util:n6-util:2.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.markit.n6platform.util/n6-util/2.3/dd477b41b57186109bd9a61ff393d46a3c12379a/n6-util-2.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.markit.n6platform.util/n6-util/2.3/5c68c830f9d3d4b37be3c4a9bdf8ab5558e000b5/n6-util-2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

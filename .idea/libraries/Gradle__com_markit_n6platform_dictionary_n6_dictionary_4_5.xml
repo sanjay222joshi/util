@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.markit.n6platform.dictionary:n6-dictionary:4.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.markit.n6platform.dictionary/n6-dictionary/4.5/db651b86d9f6ec9431f8f222b09a9385100964e6/n6-dictionary-4.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.markit.n6platform.dictionary/n6-dictionary/4.5/e470ebabd895a9da934cdc341db0b61c0a35df7e/n6-dictionary-4.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
